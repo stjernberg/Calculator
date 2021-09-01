@@ -12,30 +12,30 @@ namespace Calculator
             while (keepCalculating)
             {
 
-                
-
-
                 Console.Write("Enter a calculation method: +, -, / or * (or e to exit): ");
                 char calculationChoice = char.Parse(Console.ReadLine());
 
-                
-
+                Console.WriteLine("Enter the first number: ");
+                int num1 = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the second number: ");
+                int num2 = int.Parse(Console.ReadLine());
 
                 try
                 {
                     switch (calculationChoice)
                     {
                         case '-':
-                            RunSubtraction();
+                            RunSubtraction(num1, num2);
                             break;
                         case '+':
-                            RunAddition();
+
+                            RunAddition(num1, num2);
                             break;
                         case '/':
-                            RunDivision();
+                            RunDivision(num1, num2);
                             break;
                         case '*':
-                            RunMultiplication();
+                            RunMultiplication(num1, num2);
                             break;
                         case 'e':
                             keepCalculating = false;
@@ -45,6 +45,9 @@ namespace Calculator
                             break;
 
                     }
+                    Console.WriteLine("Hit any key to continue");
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 catch
                 {
@@ -54,55 +57,35 @@ namespace Calculator
             }
         }//end main
 
-        private static void RunSubtraction()
+        private static void RunSubtraction(int num1, int num2)
         {
             Console.WriteLine("Subtraction!");
            
-            Console.WriteLine("Enter the first number: ");
-            int num1 = int.Parse(Console.ReadLine());
-            Console.WriteLine("-");
-            Console.WriteLine("Enter the second number: ");
-            int num2 = int.Parse (Console.ReadLine());
-            int difference = num1 - num2;
-            Console.WriteLine($"{num1} - {num2} = {difference}");
+            int dif = num1 - num2;
+            Console.WriteLine($"{num1} - {num2} = {dif}");
 
         } 
-        private static void RunAddition()
+        private static void RunAddition (int num1, int num2)
         {
             Console.WriteLine("Addition!");
 
-            Console.WriteLine("Enter the first number: ");
-            int num1 = int.Parse(Console.ReadLine());
-            Console.WriteLine("+");
-            Console.WriteLine("Enter the second number: ");
-            int num2 = int.Parse(Console.ReadLine());
             int sum = num1 + num2;
             Console.WriteLine($"{num1} + {num2} = {sum}");
         } 
-        private static void RunDivision() 
+        private static void RunDivision(int num1, int num2) 
         {
             Console.WriteLine("Division!");
 
-            Console.WriteLine("Enter the first number: ");
-            int num1 = int.Parse(Console.ReadLine());
-            Console.WriteLine("/");
-            Console.WriteLine("Enter the second number: ");
-            int num2 = int.Parse(Console.ReadLine());
-            int quota = num1 / num2;
+            double quota = num1 / num2;
             Console.WriteLine($"{num1} / {num2} = {quota}");
         } 
         
-        private static void RunMultiplication()
+        private static void RunMultiplication(int num1, int num2)
         {
             Console.WriteLine("Multiplication!");
 
-            Console.WriteLine("Enter the first number: ");
-            int num1 = int.Parse(Console.ReadLine());
-            Console.WriteLine("*");
-            Console.WriteLine("Enter the second number: ");
-            int num2 = int.Parse(Console.ReadLine());
-            int product = num1 * num2;
-            Console.WriteLine($"{num1} * {num2} = {product}");
+            int prod = num1 * num2;
+            Console.WriteLine($"{num1} * {num2} = {prod}");
 
         }
 
