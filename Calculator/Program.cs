@@ -16,9 +16,23 @@ namespace Calculator
                 char calculationChoice = char.Parse(Console.ReadLine());
 
                 Console.WriteLine("Enter the first number: ");
+
                 int num1 = int.Parse(Console.ReadLine());
+                while (calculationChoice == '/' && num1 == 0)
+                {
+                    Console.WriteLine("The number can't be zero, please pick another number.");
+                    num1 = int.Parse(Console.ReadLine());
+                }
+                
                 Console.WriteLine("Enter the second number: ");
                 int num2 = int.Parse(Console.ReadLine());
+
+                while (calculationChoice == '/' && num2 == 0)
+                {
+                    Console.WriteLine("The number can't be zero, please pick another number.");
+                    num2 = int.Parse(Console.ReadLine());
+                }
+
 
                 try
                 {
@@ -32,8 +46,15 @@ namespace Calculator
                             RunAddition(num1, num2);
                             break;
                         case '/':
-                            RunDivision(num1, num2);
+                            if (num1 == 0 || num2 == 0)
+                            {
+                                
+                            }
+                            else { 
+                            RunDivision(num1, num2);   
+                            }
                             break;
+
                         case '*':
                             RunMultiplication(num1, num2);
                             break;
@@ -67,6 +88,7 @@ namespace Calculator
         } 
         private static void RunAddition (int num1, int num2)
         {
+            
             Console.WriteLine("Addition!");
 
             int sum = num1 + num2;
@@ -80,7 +102,7 @@ namespace Calculator
             Console.WriteLine($"{num1} / {num2} = {quota}");
         } 
         
-        private static void RunMultiplication(int num1, int num2)
+        private static void RunMultiplication( int num1, int num2)
         {
             Console.WriteLine("Multiplication!");
 
@@ -88,7 +110,8 @@ namespace Calculator
             Console.WriteLine($"{num1} * {num2} = {prod}");
 
         }
-
+        
+        
       
     }
 }
