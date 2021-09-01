@@ -11,97 +11,110 @@ namespace Calculator
 
             while (keepCalculating)
             {
-
-                Console.Write("Enter a calculation method: +, -, / or * (or e to exit): ");
-                char calculationChoice = char.Parse(Console.ReadLine());
-
-                Console.WriteLine("Enter the first number: ");
-
-                int num1 = int.Parse(Console.ReadLine());
-                while (calculationChoice == '/' && num1 == 0)
-                {
-                    Console.WriteLine("The number can't be zero, please pick another number.");
-                    num1 = int.Parse(Console.ReadLine());
-                }
-                
-                Console.WriteLine("Enter the second number: ");
-                int num2 = int.Parse(Console.ReadLine());
-
-                while (calculationChoice == '/' && num2 == 0)
-                {
-                    Console.WriteLine("The number can't be zero, please pick another number.");
-                    num2 = int.Parse(Console.ReadLine());
-                }
-
-
                 try
                 {
+                    Console.WriteLine("Enter a calculation method or press E to exit:");
+                    Console.WriteLine("- for Subtraction");
+                    Console.WriteLine("+ for Addition");
+                    Console.WriteLine("* for Multiplication");
+                    Console.WriteLine("/ for Division");
+
+                    char calculationChoice = char.Parse(Console.ReadLine());
+                
                     switch (calculationChoice)
                     {
                         case '-':
-                            RunSubtraction(num1, num2);
+                            RunSubtraction();
                             break;
                         case '+':
-                            RunAddition(num1, num2);
+                            RunAddition();
                             break;
                         case '/':
-                            RunDivision(num1, num2);   
+                            RunDivision();   
                             break;
 
                         case '*':
-                            RunMultiplication(num1, num2);
+                            RunMultiplication();
                             break;
                         case 'e':
                             keepCalculating = false;
+                            Console.WriteLine("Bye!");
                             break;
                         default:
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("That is not a valid option");
                             break;
 
                     }
+                                       Console.ResetColor();
                     Console.WriteLine("Hit any key to continue");
                     Console.ReadKey();
                     Console.Clear();
                 }
                 catch
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("That is not a valid option");
+                    Console.ResetColor();
                 }
 
             }
         }//end main
 
-        private static void RunSubtraction(int num1, int num2)
+       
+        private static void RunSubtraction()
         {
             Console.WriteLine("Subtraction!");
-           
-            int dif = num1 - num2;
+            double num1 = AskUserForNumber("first");
+            double num2 = AskUserForNumber("second");
+            
+            double dif = num1 - num2;
+
             Console.WriteLine($"{num1} - {num2} = {dif}");
 
         } 
-        private static void RunAddition (int num1, int num2)
+        private static void RunAddition()
         {
-            
             Console.WriteLine("Addition!");
-
-            int sum = num1 + num2;
+            double num1 = AskUserForNumber("first");
+            double num2 = AskUserForNumber("second");
+            double sum = num1 + num2;
             Console.WriteLine($"{num1} + {num2} = {sum}");
         } 
-        private static void RunDivision(int num1, int num2) 
+        private static void RunDivision() 
         {
             Console.WriteLine("Division!");
-
+            double num1 = AskUserForNumber("first");
+            while (num1 == 0)
+            {
+                Console.WriteLine("The number can't be zero, please type another number.");
+                num1 = AskUserForNumber("first");
+            }
+            double num2 = AskUserForNumber("second");
+            while (num2 == 0)
+            {
+                Console.WriteLine("The number can't be zero, please type another number.");
+                num2 = AskUserForNumber("second");
+            }
             double quota = num1 / num2;
             Console.WriteLine($"{num1} / {num2} = {quota}");
         } 
         
-        private static void RunMultiplication( int num1, int num2)
+        private static void RunMultiplication()
         {
             Console.WriteLine("Multiplication!");
-
-            int prod = num1 * num2;
+            double num1 = AskUserForNumber("first");
+            double num2 = AskUserForNumber("second");
+            double prod = num1 * num2;
             Console.WriteLine($"{num1} * {num2} = {prod}");
 
+        }
+
+        static double AskUserForNumber(string order)
+        {
+            Console.WriteLine($"Enter your {order} number:");
+            double num = double.Parse(Console.ReadLine());
+            return num;
         }
         
         
