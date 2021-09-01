@@ -13,7 +13,7 @@ namespace Calculator
             {
                 try
                 {
-                    Console.WriteLine("Enter a calculation method or press E to exit:");
+                    Console.WriteLine("Enter a calculation method or press e to exit:");
                     Console.WriteLine("- for Subtraction");
                     Console.WriteLine("+ for Addition");
                     Console.WriteLine("* for Multiplication");
@@ -85,13 +85,13 @@ namespace Calculator
         {
             Console.WriteLine("Division!");
             double num1 = AskUserForNumber("first");
-            while (num1 == 0)
+            if(num1 == 0)
             {
                 Console.WriteLine("The number can't be zero, please type another number.");
                 num1 = AskUserForNumber("first");
             }
             double num2 = AskUserForNumber("second");
-            while (num2 == 0)
+            if (num2 == 0)
             {
                 Console.WriteLine("The number can't be zero, please type another number.");
                 num2 = AskUserForNumber("second");
