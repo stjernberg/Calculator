@@ -42,17 +42,10 @@ namespace Calculator
                             RunSubtraction(num1, num2);
                             break;
                         case '+':
-
                             RunAddition(num1, num2);
                             break;
                         case '/':
-                            if (num1 == 0 || num2 == 0)
-                            {
-                                
-                            }
-                            else { 
                             RunDivision(num1, num2);   
-                            }
                             break;
 
                         case '*':
