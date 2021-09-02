@@ -1,2 +1,2 @@
 # Calculator 🖩
-## A console based calculator created in #C.
+## A console based calculator created in C#.
