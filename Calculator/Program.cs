@@ -13,15 +13,9 @@ namespace Calculator
             {
                 try
                 {
-                    Console.WriteLine("Enter a calculation method or press e to exit:");
-                    Console.WriteLine("- for Subtraction");
-                    Console.WriteLine("+ for Addition");
-                    Console.WriteLine("* for Multiplication");
-                    Console.WriteLine("/ for Division");
-
-                    char calculationChoice = char.Parse(Console.ReadLine());
+                    char chooseMethod = MenuSelection();
                 
-                    switch (calculationChoice)
+                    switch (chooseMethod)
                     {
                         case '-':
                             RunSubtraction();
@@ -37,7 +31,7 @@ namespace Calculator
                             break;
                         case 'e':
                             keepCalculating = false;
-                            Console.WriteLine("Bye!");
+                            Console.WriteLine("Good bye!");
                             break;
                         default:
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -62,7 +56,14 @@ namespace Calculator
 
         static char MenuSelection()
         {
+            Console.WriteLine("Enter a calculation method or press e to exit:");
+            Console.WriteLine("- for Subtraction");
+            Console.WriteLine("+ for Addition");
+            Console.WriteLine("* for Multiplication");
+            Console.WriteLine("/ for Division");
 
+            char calculationChoice = char.Parse(Console.ReadLine());
+            return calculationChoice;
         }
        
         private static void RunSubtraction()
@@ -90,13 +91,17 @@ namespace Calculator
             double num1 = AskUserForNumber("first");
             if(num1 == 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("The number can't be zero, please type another number.");
+                Console.ResetColor();
                 num1 = AskUserForNumber("first");
             }
             double num2 = AskUserForNumber("second");
             if (num2 == 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("The number can't be zero, please type another number.");
+                Console.ResetColor();
                 num2 = AskUserForNumber("second");
             }
 
@@ -131,9 +136,7 @@ namespace Calculator
 
             return number;
 
-        }
-        
-        
+        }     
       
     }
 }
