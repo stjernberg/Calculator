@@ -122,7 +122,7 @@ namespace Calculator
         static double AskUserForNumber(string order)
         {
            
-            Console.WriteLine($"Enter your {order} number:");
+            Console.Write($"Enter your {order} number: ");
             string askUserNumber = Console.ReadLine();
             double number;  
            
