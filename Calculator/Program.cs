@@ -32,7 +32,6 @@ namespace Calculator
                         case '/':
                             RunDivision();   
                             break;
-
                         case '*':
                             RunMultiplication();
                             break;
@@ -46,7 +45,7 @@ namespace Calculator
                             break;
 
                     }
-                                       Console.ResetColor();
+                    Console.ResetColor();
                     Console.WriteLine("Hit any key to continue");
                     Console.ReadKey();
                     Console.Clear();
@@ -61,6 +60,10 @@ namespace Calculator
             }
         }//end main
 
+        static char MenuSelection()
+        {
+
+        }
        
         private static void RunSubtraction()
         {
@@ -96,6 +99,7 @@ namespace Calculator
                 Console.WriteLine("The number can't be zero, please type another number.");
                 num2 = AskUserForNumber("second");
             }
+
             double quota = num1 / num2;
             Console.WriteLine($"{num1} / {num2} = {quota}");
         } 
@@ -112,9 +116,21 @@ namespace Calculator
 
         static double AskUserForNumber(string order)
         {
+           
             Console.WriteLine($"Enter your {order} number:");
-            double num = double.Parse(Console.ReadLine());
-            return num;
+            string askUserNumber = Console.ReadLine();
+            double number;  
+           
+            while(!double.TryParse(askUserNumber, out number))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("You must type a number, please try again!");
+                Console.ResetColor();
+                askUserNumber = Console.ReadLine();
+            }
+
+            return number;
+
         }
         
         
