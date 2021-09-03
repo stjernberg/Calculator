@@ -96,6 +96,7 @@ namespace Calculator
                 Console.ResetColor();
                 num1 = AskUserForNumber("first");
             }
+
             double num2 = AskUserForNumber("second");
             if (num2 == 0)
             {
