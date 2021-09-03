@@ -105,8 +105,8 @@ namespace Calculator
                 num2 = AskUserForNumber("second");
             }
 
-            double quota = num1 / num2;
-            Console.WriteLine($"{num1} / {num2} = {quota}");
+            double quot = num1 / num2;
+            Console.WriteLine($"{num1} / {num2} = {quot}");
         } 
         
         private static void RunMultiplication()
